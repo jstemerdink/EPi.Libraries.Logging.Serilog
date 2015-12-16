@@ -8,7 +8,7 @@
 
 ## About
 This will add Serilog logging to your EPiServer site
-See [Serilog wiki](https://github.com/serilog/serilog/wiki/ for information about Serilog.
+See [Serilog wiki](https://github.com/serilog/serilog/wiki/) for information about Serilog.
 
 ## Requirements
 
