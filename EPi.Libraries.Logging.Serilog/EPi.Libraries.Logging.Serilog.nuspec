@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <projectUrl>https://github.com/jstemerdink/EPi.Libraries.Logging.Serilog/</projectUrl>
+    <iconUrl>http://jstemerdink.net/images/js-nuget.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright © Jeroen Stemerdink 2015</copyright>
+    <tags>logging Serilog</tags>
+    <dependencies>
+      <dependency id="EPiServer.Framework" version="[9.0.3, 10.0)" />
+      <dependency id="Serilog" version="1.5.14" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="readme.txt" target="" />
+  </files>
+</package>
