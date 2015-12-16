@@ -14,7 +14,7 @@
     <copyright>Copyright © Jeroen Stemerdink 2015</copyright>
     <tags>logging Serilog</tags>
     <dependencies>
-      <dependency id="EPiServer.Framework" version="[9.0.3, 10.0)" />
+      <dependency id="EPiServer.CMS.Core" version="9.0.3" />
       <dependency id="Serilog" version="1.5.14" />
     </dependencies>
   </metadata>
