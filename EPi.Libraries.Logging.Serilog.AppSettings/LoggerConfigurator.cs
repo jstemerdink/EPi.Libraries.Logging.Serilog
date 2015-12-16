@@ -10,13 +10,15 @@ namespace EPi.Libraries.Logging.Serilog.AppSettings
     [ServiceConfiguration(ServiceType = typeof(ILoggerConfigurator), Lifecycle = ServiceInstanceScope.Singleton)]
     public class LoggerConfigurator : ILoggerConfigurator
     {
+        private ILogger logger;
+
         /// <summary>
         /// Gets the logger.
         /// </summary>
         /// <returns>Serilog.ILogger.</returns>
         public ILogger GetLogger()
         {
-            return new LoggerConfiguration().ReadFrom.AppSettings().CreateLogger();
+            return this.logger ?? (this.logger = new LoggerConfiguration().ReadFrom.AppSettings().CreateLogger());
         }
     }
 }

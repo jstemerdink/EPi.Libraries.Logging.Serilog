@@ -13,7 +13,7 @@ using Serilog.Events;
 namespace EPi.Libraries.Logging.Serilog
 {
     /// <summary>
-    /// Class SeriLogger.
+    /// Class SeriLogger. 
     /// </summary>
     public class SeriLogger : EPiServer.Logging.ILogger
     {
@@ -34,7 +34,10 @@ namespace EPi.Libraries.Logging.Serilog
         /// </summary>
         public SeriLogger()
         {
-            this.logger = this.LoggerConfigurator.Service.GetLogger();
+            if (this.logger == null)
+            {
+                this.logger = this.LoggerConfigurator.Service.GetLogger();
+            }
         }
 
         /// <summary>
@@ -79,9 +82,11 @@ namespace EPi.Libraries.Logging.Serilog
             if (boundaryType != null && boundaryType != typeof(LoggerExtensions))
             {
                 this.logger.ForContext(boundaryType);
+                //global::Serilog.Log.ForContext(boundaryType);
             }
 
             this.logger.Write(mappedLevel, exception, messageFormatter(state, exception));
+            //global::Serilog.Log.Write(mappedLevel, exception, messageFormatter(state, exception)); 
         }
 
         /// <summary>
@@ -92,6 +97,7 @@ namespace EPi.Libraries.Logging.Serilog
         public bool IsEnabled(LogEventLevel level)
         {
             return this.logger.IsEnabled(level);
+            //return global::Serilog.Log.IsEnabled(level);
         }
 
         /// <summary>
@@ -117,7 +123,7 @@ namespace EPi.Libraries.Logging.Serilog
                 case Level.Critical:
                     return LogEventLevel.Fatal;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(level));
+                    throw new ArgumentOutOfRangeException("level");
             }
         }
     }
