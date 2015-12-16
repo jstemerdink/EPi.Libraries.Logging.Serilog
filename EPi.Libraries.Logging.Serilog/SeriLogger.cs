@@ -117,7 +117,7 @@ namespace EPi.Libraries.Logging.Serilog
                 case Level.Critical:
                     return LogEventLevel.Fatal;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(level));
+                    throw new ArgumentOutOfRangeException("level");
             }
         }
     }
