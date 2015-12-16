@@ -147,6 +147,7 @@
     <None Include="EPi.Libraries.Logging.Serilog.AppSettings.nuspec" />
     <None Include="EPiServer.Libraries.snk" />
     <None Include="packages.config" />
+    <None Include="README.md" />
     <None Include="web.config.install.xdt" />
   </ItemGroup>
   <ItemGroup>
