@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<package >
+
+<package>
   <metadata>
     <id>$id$</id>
     <version>$version$</version>
@@ -10,14 +11,14 @@
     <iconUrl>http://jstemerdink.net/images/js-nuget.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes></releaseNotes>
-    <copyright>Copyright © Jeroen Stemerdink 2015</copyright>
+    <releaseNotes>Updated to EPiServer 10</releaseNotes>
+    <copyright>Copyright © Jeroen Stemerdink 2016</copyright>
     <tags>logging Serilog</tags>
     <dependencies>
-      <dependency id="EPi.Libraries.Logging.Serilog" version="1.0.0" />
+      <dependency id="EPi.Libraries.Logging.Serilog" version="2.0.0" />
     </dependencies>
   </metadata>
-    <files>
+  <files>
     <file src="web.config.install.xdt" target="content" />
     <file src="readme.txt" target="" />
   </files>
