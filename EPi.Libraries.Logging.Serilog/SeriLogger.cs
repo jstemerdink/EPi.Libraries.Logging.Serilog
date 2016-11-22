@@ -38,15 +38,25 @@ namespace EPi.Libraries.Logging.Serilog
         /// </summary>
         private readonly ILogger logger;
 
+
         /// <summary>
         /// Initializes a new instance of the <see cref="T:System.Object"/> class.
         /// </summary>
-        public SeriLogger()
+        /// <param name="name">Name of the logger</param>
+        public SeriLogger(string name)
         {
             if (this.logger == null)
             {
-                this.logger = this.LoggerConfigurator.Service.GetLogger();
+                this.logger = this.LoggerConfigurator.Service.GetLogger(name);
             }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:System.Object"/> class.
+        /// </summary>
+        public SeriLogger() : this(null)
+        {
+            
         }
 
         /// <summary>

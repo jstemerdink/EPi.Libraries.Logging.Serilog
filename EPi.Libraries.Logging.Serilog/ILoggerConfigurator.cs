@@ -27,6 +27,13 @@ namespace EPi.Libraries.Logging.Serilog
     public interface ILoggerConfigurator
     {
         /// <summary>
+        /// Gets the logger with the specified name
+        /// </summary>
+        /// <param name="name">Name of the logger</param>
+        /// <returns>Serilog.ILogger with the passed in name.</returns>
+        ILogger GetLogger(string name);
+
+        /// <summary>
         /// Gets the logger.
         /// </summary>
         /// <returns>Serilog.ILogger.</returns>

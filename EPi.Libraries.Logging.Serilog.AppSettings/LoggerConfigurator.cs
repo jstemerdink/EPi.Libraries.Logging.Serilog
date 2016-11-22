@@ -32,12 +32,22 @@ namespace EPi.Libraries.Logging.Serilog.AppSettings
         private ILogger logger;
 
         /// <summary>
+        /// Gets the logger with the specified name
+        /// </summary>
+        /// <param name="name">Name of the logger</param>
+        /// <returns>Serilog.ILogger with the passed in name.</returns>
+        public ILogger GetLogger(string name)
+        {
+            return this.logger ?? (this.logger = new LoggerConfiguration().ReadFrom.AppSettings().CreateLogger());
+        }
+
+        /// <summary>
         /// Gets the logger.
         /// </summary>
         /// <returns>Serilog.ILogger.</returns>
         public ILogger GetLogger()
         {
-            return this.logger ?? (this.logger = new LoggerConfiguration().ReadFrom.AppSettings().CreateLogger());
+            return GetLogger(null);
         }
     }
 }
