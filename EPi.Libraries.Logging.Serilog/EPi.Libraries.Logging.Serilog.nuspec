@@ -11,7 +11,7 @@
     <iconUrl>http://jstemerdink.net/images/js-nuget.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Updated to EPiServer 10</releaseNotes>
+    <releaseNotes>You can now pass the name from the SeriLogger to the ILoggerConfigurator.</releaseNotes>
     <copyright>Copyright © Jeroen Stemerdink 2016</copyright>
     <tags>logging Serilog</tags>
     <dependencies>
