@@ -29,7 +29,7 @@ namespace EPi.Libraries.Logging.Serilog
     using ILogger = global::Serilog.ILogger;
 
     /// <summary>
-    /// Class SeriLogger. 
+    /// Class SeriLogger.
     /// </summary>
     public class SeriLogger : EPiServer.Logging.ILogger
     {
@@ -38,9 +38,8 @@ namespace EPi.Libraries.Logging.Serilog
         /// </summary>
         private readonly ILogger logger;
 
-
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:System.Object"/> class.
+        /// Initializes a new instance of the <see cref="SeriLogger"/> class.
         /// </summary>
         /// <param name="name">Name of the logger</param>
         public SeriLogger(string name)
@@ -52,11 +51,10 @@ namespace EPi.Libraries.Logging.Serilog
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:System.Object"/> class.
+        /// Initializes a new instance of the <see cref="SeriLogger"/> class.
         /// </summary>
         public SeriLogger() : this(null)
         {
-            
         }
 
         /// <summary>
@@ -103,10 +101,10 @@ namespace EPi.Libraries.Logging.Serilog
         /// <exception cref="Exception">A delegate callback throws an exception.</exception>
         /// <exception cref="ArgumentOutOfRangeException">level</exception>
         public void Log<TState, TException>(
-            Level level, 
-            TState state, 
-            TException exception, 
-            Func<TState, TException, string> messageFormatter, 
+            Level level,
+            TState state,
+            TException exception,
+            Func<TState, TException, string> messageFormatter,
             Type boundaryType) where TException : Exception
         {
             if (messageFormatter == null)
@@ -130,15 +128,15 @@ namespace EPi.Libraries.Logging.Serilog
 
             this.logger.Write(mappedLevel, exception, messageFormatter(state, exception));
 
-            // global::Serilog.Log.Write(mappedLevel, exception, messageFormatter(state, exception)); 
+            // global::Serilog.Log.Write(mappedLevel, exception, messageFormatter(state, exception));
         }
 
         /// <summary>
-        ///     Maps the EPiServer level to the NLoge level.
+        ///     Maps the EPiServer level to the <see cref="LogEventLevel"/> level.
         /// </summary>
         /// <param name="level">The level.</param>
-        /// <returns>LogLevel.</returns>
-        /// <exception cref="System.ArgumentOutOfRangeException">level</exception>
+        /// <returns>The mapped <see cref="LogEventLevel"/>.</returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">The given <paramref name="level"/> can't be mapped.</exception>
         private static LogEventLevel MapLevel(Level level)
         {
             switch (level)

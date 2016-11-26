@@ -19,6 +19,8 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 namespace EPi.Libraries.Logging.Serilog
 {
+    using System;
+
     using global::Serilog;
 
     /// <summary>
@@ -27,16 +29,16 @@ namespace EPi.Libraries.Logging.Serilog
     public interface ILoggerConfigurator
     {
         /// <summary>
-        /// Gets the logger with the specified name
+        /// Gets a <see cref="T:Serilog.ILogger" /> instance for the provided name.
         /// </summary>
         /// <param name="name">Name of the logger</param>
-        /// <returns>Serilog.ILogger with the passed in name.</returns>
+        /// <returns>A new <see cref="T:Serilog.ILogger" /> instance for the provided name.</returns>
         ILogger GetLogger(string name);
 
         /// <summary>
-        /// Gets the logger.
+        /// Gets a <see cref="T:Serilog.ILogger" /> instance.
         /// </summary>
-        /// <returns>Serilog.ILogger.</returns>
+        /// <returns>A new <see cref="T:Serilog.ILogger" /> instance.</returns>
         ILogger GetLogger();
     }
 }
