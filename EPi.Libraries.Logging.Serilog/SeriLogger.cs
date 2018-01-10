@@ -1,4 +1,4 @@
-﻿// Copyright © 2016 Jeroen Stemerdink.
+﻿// Copyright © 2018 Jeroen Stemerdink.
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
 // files (the "Software"), to deal in the Software without
@@ -129,6 +129,14 @@ namespace EPi.Libraries.Logging.Serilog
             this.logger.Write(mappedLevel, exception, messageFormatter(state, exception));
 
             // global::Serilog.Log.Write(mappedLevel, exception, messageFormatter(state, exception));
+        }
+
+        /// <summary>
+        /// Closes the logger instance and flushes it.
+        /// </summary>
+        public void CloseAndFlush()
+        {
+            this.LoggerConfigurator.Service.Dispose();
         }
 
         /// <summary>

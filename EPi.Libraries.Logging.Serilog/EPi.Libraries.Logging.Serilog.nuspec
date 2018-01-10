@@ -5,18 +5,18 @@
     <id>$id$</id>
     <version>$version$</version>
     <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <authors>Jeroen Stemerdink</authors>
+    <owners>Jeroen Stemerdink</owners>
     <projectUrl>https://github.com/jstemerdink/EPi.Libraries.Logging.Serilog/</projectUrl>
     <iconUrl>http://jstemerdink.net/images/js-nuget.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
-    <releaseNotes>You can now pass the name from the SeriLogger to the ILoggerConfigurator.</releaseNotes>
-    <copyright>Copyright © Jeroen Stemerdink 2016</copyright>
+    <description>Serilog logging provider for EPiServer</description>
+    <releaseNotes>Updated to EPiServer 11</releaseNotes>
+    <copyright>Copyright © Jeroen Stemerdink 2018</copyright>
     <tags>logging Serilog</tags>
     <dependencies>
-      <dependency id="EPiServer.CMS.Core" version="10.0.0" />
-      <dependency id="Serilog" version="1.5.14" />
+      <dependency id="EPiServer.Framework" version="11.1.0" />
+      <dependency id="Serilog" version="2.6.0" />
     </dependencies>
   </metadata>
   <files>

@@ -1,4 +1,4 @@
-﻿// Copyright © 2016 Jeroen Stemerdink.
+﻿// Copyright © 2018 Jeroen Stemerdink.
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
 // files (the "Software"), to deal in the Software without
@@ -24,6 +24,7 @@ namespace EPi.Libraries.Logging.Serilog.AppSettings
     using EPiServer.ServiceLocation;
 
     using global::Serilog;
+    using global::Serilog.Core;
 
     /// <summary>
     /// Class LoggerConfigurator.
@@ -34,7 +35,7 @@ namespace EPi.Libraries.Logging.Serilog.AppSettings
         /// <summary>
         /// The logger
         /// </summary>
-        private ILogger logger;
+        private Logger logger;
 
         /// <summary>
         /// Gets a <see cref="T:Serilog.ILogger" /> instance for the provided name.
@@ -53,6 +54,14 @@ namespace EPi.Libraries.Logging.Serilog.AppSettings
         public ILogger GetLogger()
         {
             return this.GetLogger(null);
+        }
+
+        /// <summary>
+        /// Disposes this instance.
+        /// </summary>
+        public void Dispose()
+        {
+            this.logger.Dispose();
         }
     }
 }
