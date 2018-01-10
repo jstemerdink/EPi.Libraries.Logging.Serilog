@@ -5,17 +5,18 @@
     <id>$id$</id>
     <version>$version$</version>
     <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <authors>Jeroen Stemerdink</authors>
+    <owners>Jeroen Stemerdink</owners>
     <projectUrl>https://github.com/jstemerdink/EPi.Libraries.Logging.Serilog/</projectUrl>
     <iconUrl>http://jstemerdink.net/images/js-nuget.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
-    <releaseNotes>Updated to EPiServer 10</releaseNotes>
-    <copyright>Copyright © Jeroen Stemerdink 2016</copyright>
+    <description>Serilog configurator for EPi.Libraries.Logging.Serilog</description>
+    <releaseNotes>Updated to EPiServer 11</releaseNotes>
+    <copyright>Copyright © Jeroen Stemerdink 2018</copyright>
     <tags>logging Serilog</tags>
     <dependencies>
-      <dependency id="EPi.Libraries.Logging.Serilog" version="2.1.0" />
+      <dependency id="EPi.Libraries.Logging.Serilog" version="3.0.0" />
+      <dependency id="Serilog.Settings.AppSettings" version="2.1.2" />
     </dependencies>
   </metadata>
   <files>

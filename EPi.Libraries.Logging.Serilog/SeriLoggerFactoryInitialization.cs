@@ -1,4 +1,4 @@
-﻿// Copyright © 2016 Jeroen Stemerdink.
+﻿// Copyright © 2018 Jeroen Stemerdink.
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
 // files (the "Software"), to deal in the Software without
@@ -24,6 +24,7 @@ namespace EPi.Libraries.Logging.Serilog
     using EPiServer.Framework;
     using EPiServer.Framework.Initialization;
     using EPiServer.Logging;
+    using EPiServer.ServiceLocation;
 
     /// <summary>
     /// Class SeriLoggerFactoryInitialization.
@@ -37,6 +38,11 @@ namespace EPi.Libraries.Logging.Serilog
         private static bool initialized;
 
         /// <summary>
+        /// The logger configurator
+        /// </summary>
+        private ILoggerConfigurator loggerConfigurator;
+
+        /// <summary>
         ///     Initializes this instance.
         /// </summary>
         /// <param name="context">
@@ -47,7 +53,8 @@ namespace EPi.Libraries.Logging.Serilog
         ///     only once per AppDomain, unless the method throws an exception. If an exception is thrown, the initialization
         ///     method will be called repeatedly for each request reaching the site until the method succeeds.
         /// </remarks>
-        /// <exception cref="ArgumentNullException">factory</exception>
+        /// <exception cref="ArgumentNullException">The factory thrwe an exception.</exception>
+        /// <exception cref="ActivationException">if there is are errors resolving the service instance.</exception>
         public void Initialize(InitializationEngine context)
         {
             // If there is no context, we can't do anything.
@@ -63,6 +70,8 @@ namespace EPi.Libraries.Logging.Serilog
             }
 
             LogManager.Instance.AddFactory(new SeriLoggerFactory());
+
+            this.loggerConfigurator = context.Locate.Advanced.GetInstance<ILoggerConfigurator>();
 
             initialized = true;
         }
@@ -90,6 +99,7 @@ namespace EPi.Libraries.Logging.Serilog
         /// </remarks>
         public void Uninitialize(InitializationEngine context)
         {
+            this.loggerConfigurator.Dispose();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿// Copyright © 2016 Jeroen Stemerdink.
+﻿// Copyright © 2018 Jeroen Stemerdink.
 // Permission is hereby granted, free of charge, to any person
 // obtaining a copy of this software and associated documentation
 // files (the "Software"), to deal in the Software without
@@ -40,5 +40,10 @@ namespace EPi.Libraries.Logging.Serilog
         /// </summary>
         /// <returns>A new <see cref="T:Serilog.ILogger" /> instance.</returns>
         ILogger GetLogger();
+
+        /// <summary>
+        /// Disposes this instance. e.g in the Application_End() method of ASP.NET's Global.asax
+        /// </summary>
+        void Dispose();
     }
 }
