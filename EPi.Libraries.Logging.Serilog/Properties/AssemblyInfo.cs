@@ -41,3 +41,6 @@ using System.Runtime.InteropServices;
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("c2f0d9e8-f9e0-47ce-9a1a-b86ac7c004c1")]
 [assembly: CLSCompliant(true)]
+
+// Register Serlog as Episerver logger factory, https://world.episerver.com/documentation/developer-guides/CMS/logging/
+[assembly: EPiServer.Logging.LoggerFactory(typeof(EPi.Libraries.Logging.Serilog.SeriLoggerFactory))]
