@@ -44,7 +44,9 @@ namespace EPi.Libraries.Logging.Serilog.AppSettings
         /// <returns>A new <see cref="T:Serilog.ILogger" /> instance for the provided name.</returns>
         public ILogger GetLogger(string name)
         {
-            return this.logger ?? (this.logger = new LoggerConfiguration().ReadFrom.AppSettings().CreateLogger());
+            ILogger configuredLogger = this.logger ?? (this.logger = new LoggerConfiguration().ReadFrom.AppSettings().Enrich.FromLogContext().CreateLogger());
+
+            return string.IsNullOrWhiteSpace(name) ? configuredLogger : configuredLogger.ForContext("Logger", name);
         }
 
         /// <summary>
