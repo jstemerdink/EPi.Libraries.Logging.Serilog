@@ -26,5 +26,5 @@ This name can be resolved by Structuremap, for contextual logging you can pass i
 
 container.Configure(x => x.For<ILogger>().AlwaysUnique().Use(s => LogManager.GetLogger(s.ParentType ?? typeof(ILogger))));
 
-(Thanx Wessel Terpstra for thsi addition)
+(Thanx Wessel Terpstra for this addition)
 

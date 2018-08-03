@@ -90,8 +90,6 @@ namespace EPi.Libraries.Logging.Serilog
         public bool IsEnabled(LogEventLevel level)
         {
             return this.logger.IsEnabled(level);
-
-            // return global::Serilog.Log.IsEnabled(level);
         }
 
         /// <summary>
@@ -99,7 +97,7 @@ namespace EPi.Libraries.Logging.Serilog
         /// </summary>
         /// <typeparam name="TState">The type of the state object.</typeparam><typeparam name="TException">The type of the exception.</typeparam><param name="level">The criticality level of the log message.</param><param name="state">The state that should be logged.</param><param name="exception">The exception that should be logged.</param><param name="messageFormatter">The message formatter used to write the state to the log provider.</param><param name="boundaryType">The type at the boundary of the logging framework facing the code using the logging.</param>
         /// <exception cref="Exception">A delegate callback throws an exception.</exception>
-        /// <exception cref="ArgumentOutOfRangeException">level</exception>
+        /// <exception cref="ArgumentOutOfRangeException">The level is not supported</exception>
         public void Log<TState, TException>(
             Level level,
             TState state,
@@ -122,13 +120,9 @@ namespace EPi.Libraries.Logging.Serilog
             if ((boundaryType != null) && (boundaryType != typeof(LoggerExtensions)))
             {
                 this.logger.ForContext(boundaryType);
-
-                // global::Serilog.Log.ForContext(boundaryType);
             }
 
             this.logger.Write(mappedLevel, exception, messageFormatter(state, exception));
-
-            // global::Serilog.Log.Write(mappedLevel, exception, messageFormatter(state, exception));
         }
 
         /// <summary>

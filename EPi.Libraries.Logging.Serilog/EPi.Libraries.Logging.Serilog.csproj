@@ -145,7 +145,6 @@
     <Compile Include="SeriLogger.cs" />
     <Compile Include="SeriLoggerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SeriLoggerFactoryInitialization.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="EPi.Libraries.Logging.Serilog.nuspec" />
