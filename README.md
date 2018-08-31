@@ -15,7 +15,7 @@ This will add Serilog logging to your EPiServer site
 See [Serilog wiki](https://github.com/serilog/serilog/wiki/) for information about Serilog.
 
 ## Parts
-[Logger](EPi.Libraries.Logging.Serilog.AppSettings/README.md)  
+[Logger](EPi.Libraries.Logging.Serilog/README.md)  
 [AppSettings provider](EPi.Libraries.Logging.Serilog.AppSettings/README.md)  
 
 
