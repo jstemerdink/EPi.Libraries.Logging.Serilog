@@ -8,6 +8,8 @@
 
 
 [![Quality Gate](https://sonarcloud.io/api/project_badges/quality_gate?project=jstemerdink:EPi.Libraries.Logging.Serilog)](https://sonarcloud.io/dashboard?id=jstemerdink%3AEPi.Libraries.Logging.Serilog)
+
+
 ## About
 This will add Serilog logging to your EPiServer site
 See [Serilog wiki](https://github.com/serilog/serilog/wiki/) for information about Serilog.

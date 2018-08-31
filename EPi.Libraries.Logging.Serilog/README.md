@@ -10,6 +10,21 @@
 This will add Serilog logging to your EPiServer site.
 See [Serilog wiki](https://github.com/serilog/serilog/wiki/ for information about Serilog.
 
+You will need a Logger configuration. You can either use my [AppSettings provider](../EPi.Libraries.Logging.Serilog.AppSettings/README.md), so you can configure Serilog in the AppSettings
+or you can create your own implementation.
+
+```C#
+    [ServiceConfiguration(ServiceType = typeof(ILoggerConfigurator), Lifecycle = ServiceInstanceScope.Singleton)]
+    public class LoggerConfigurator : ILoggerConfigurator
+    {
+        public ILogger GetLogger()
+        {
+            return your own configuration here;
+        }
+    }
+```
+
+
 > *Powered by ReSharper*
 > [![image](https://i0.wp.com/jstemerdink.files.wordpress.com/2017/08/logo_resharper.png)](http://jetbrains.com)
 
