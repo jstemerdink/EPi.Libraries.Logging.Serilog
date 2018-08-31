@@ -38,6 +38,11 @@ namespace EPi.Libraries.Logging.Serilog.AppSettings
         private Logger logger;
 
         /// <summary>
+        /// Indicating whether the instance is disposed.
+        /// </summary>
+        private bool disposed;
+
+        /// <summary>
         /// Gets a <see cref="T:Serilog.ILogger" /> instance for the provided name.
         /// </summary>
         /// <param name="name">Name of the logger</param>
@@ -63,7 +68,34 @@ namespace EPi.Libraries.Logging.Serilog.AppSettings
         /// </summary>
         public void Dispose()
         {
-            this.logger.Dispose();
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (this.disposed)
+            {
+                return;
+            } 
+      
+            if (disposing) {
+                this.logger.Dispose();
+            }
+      
+            this.disposed = true;
+        }
+
+        /// <summary>
+        /// Finalizes an instance of the <see cref="LoggerConfigurator"/> class.
+        /// </summary>
+        ~LoggerConfigurator()
+        {
+            this.Dispose(false);
         }
     }
 }
