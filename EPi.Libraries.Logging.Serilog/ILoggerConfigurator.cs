@@ -26,7 +26,7 @@ namespace EPi.Libraries.Logging.Serilog
     /// <summary>
     /// Interface ILoggerConfigurator
     /// </summary>
-    public interface ILoggerConfigurator
+    public interface ILoggerConfigurator : IDisposable
     {
         /// <summary>
         /// Gets a <see cref="T:Serilog.ILogger" /> instance for the provided name.
@@ -40,10 +40,5 @@ namespace EPi.Libraries.Logging.Serilog
         /// </summary>
         /// <returns>A new <see cref="T:Serilog.ILogger" /> instance.</returns>
         ILogger GetLogger();
-
-        /// <summary>
-        /// Disposes this instance. e.g in the Application_End() method of ASP.NET's Global.asax
-        /// </summary>
-        void Dispose();
     }
 }
