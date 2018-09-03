@@ -7,7 +7,12 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT%20license-blue.svg?style=flat)](LICENSE)
 
 
-[![Quality Gate](https://sonarcloud.io/api/project_badges/quality_gate?project=jstemerdink:EPi.Libraries.Logging.Serilog)](https://sonarcloud.io/dashboard?id=jstemerdink%3AEPi.Libraries.Logging.Serilog)
+[![Reliability](https://sonarcloud.io/api/project_badges/measure?project=jstemerdink:EPi.Libraries.Logging.Serilog&metric=reliability_rating)](https://sonarcloud.io/component_measures?id=jstemerdink%3AEPi.Libraries.Logging.Serilog&metric=Reliability)
+[![Security](https://sonarcloud.io/api/project_badges/measure?project=jstemerdink:EPi.Libraries.Logging.Serilog&metric=security_rating)](https://sonarcloud.io/component_measures?id=jstemerdink%3AEPi.Libraries.Logging.Serilog&metric=Security)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=jstemerdink:EPi.Libraries.Logging.Serilog&metric=bugs)](https://sonarcloud.io/dashboard?id=jstemerdink%3AEPi.Libraries.Logging.Serilog)
+[![Code smells](https://sonarcloud.io/api/project_badges/measure?project=jstemerdink:EPi.Libraries.Logging.Serilog&metric=code_smells)](https://sonarcloud.io/dashboard?id=jstemerdink%3AEPi.Libraries.Logging.Serilog)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=jstemerdink:EPi.Libraries.Logging.Serilog&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=jstemerdink%3AEPi.Libraries.Logging.Serilog)
+
 
 
 ## About
