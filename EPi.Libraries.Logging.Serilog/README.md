@@ -14,14 +14,14 @@ You will need a Logger configuration. You can either use my [AppSettings provide
 or you can create your own implementation.
 
 ```C#
-    [ServiceConfiguration(ServiceType = typeof(ILoggerConfigurator), Lifecycle = ServiceInstanceScope.Singleton)]
-    public class LoggerConfigurator : ILoggerConfigurator
+[ServiceConfiguration(ServiceType = typeof(ILoggerConfigurator), Lifecycle = ServiceInstanceScope.Singleton)]
+public class LoggerConfigurator : ILoggerConfigurator
+{
+    public ILogger GetLogger()
     {
-        public ILogger GetLogger()
-        {
-            return your own configuration here;
-        }
+        return your own configuration here;
     }
+}
 ```
 
 
