@@ -9,10 +9,7 @@
 
 [![Reliability](https://sonarcloud.io/api/project_badges/measure?project=jstemerdink:EPi.Libraries.Logging.Serilog&metric=reliability_rating)](https://sonarcloud.io/component_measures?id=jstemerdink%3AEPi.Libraries.Logging.Serilog&metric=Reliability)
 [![Security](https://sonarcloud.io/api/project_badges/measure?project=jstemerdink:EPi.Libraries.Logging.Serilog&metric=security_rating)](https://sonarcloud.io/component_measures?id=jstemerdink%3AEPi.Libraries.Logging.Serilog&metric=Security)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=jstemerdink:EPi.Libraries.Logging.Serilog&metric=bugs)](https://sonarcloud.io/dashboard?id=jstemerdink%3AEPi.Libraries.Logging.Serilog)
-[![Code smells](https://sonarcloud.io/api/project_badges/measure?project=jstemerdink:EPi.Libraries.Logging.Serilog&metric=code_smells)](https://sonarcloud.io/dashboard?id=jstemerdink%3AEPi.Libraries.Logging.Serilog)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=jstemerdink:EPi.Libraries.Logging.Serilog&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=jstemerdink%3AEPi.Libraries.Logging.Serilog)
-
+[![Maintainability](https://sonarcloud.io/api/project_badges/measure?project=jstemerdink%3AEPi.Libraries.Logging.Serilog&metric=sqale_rating)](https://sonarcloud.io/component_measures?id=jstemerdink%3AEPi.Libraries.Logging.Serilog&metric=Maintainability)
 
 
 ## About
