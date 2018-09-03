@@ -17,6 +17,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 namespace EPi.Libraries.Logging.Serilog.AppSettings
 {
     using System;
@@ -43,15 +44,27 @@ namespace EPi.Libraries.Logging.Serilog.AppSettings
         private bool disposed;
 
         /// <summary>
+        /// Finalizes an instance of the <see cref="LoggerConfigurator"/> class.
+        /// </summary>
+        ~LoggerConfigurator()
+        {
+            this.Dispose(false);
+        }
+
+        /// <summary>
         /// Gets a <see cref="T:Serilog.ILogger" /> instance for the provided name.
         /// </summary>
         /// <param name="name">Name of the logger</param>
         /// <returns>A new <see cref="T:Serilog.ILogger" /> instance for the provided name.</returns>
         public ILogger GetLogger(string name)
         {
-            ILogger configuredLogger = this.logger ?? (this.logger = new LoggerConfiguration().ReadFrom.AppSettings().Enrich.FromLogContext().CreateLogger());
+            ILogger configuredLogger = this.logger ?? (this.logger =
+                                                           new LoggerConfiguration().ReadFrom.AppSettings().Enrich
+                                                               .FromLogContext().CreateLogger());
 
-            return string.IsNullOrWhiteSpace(name) ? configuredLogger : configuredLogger.ForContext("Logger", name);
+            return string.IsNullOrWhiteSpace(value: name)
+                       ? configuredLogger
+                       : configuredLogger.ForContext("Logger", value: name);
         }
 
         /// <summary>
@@ -81,21 +94,14 @@ namespace EPi.Libraries.Logging.Serilog.AppSettings
             if (this.disposed)
             {
                 return;
-            } 
-      
-            if (disposing) {
+            }
+
+            if (disposing)
+            {
                 this.logger.Dispose();
             }
-      
-            this.disposed = true;
-        }
 
-        /// <summary>
-        /// Finalizes an instance of the <see cref="LoggerConfigurator"/> class.
-        /// </summary>
-        ~LoggerConfigurator()
-        {
-            this.Dispose(false);
+            this.disposed = true;
         }
     }
 }
