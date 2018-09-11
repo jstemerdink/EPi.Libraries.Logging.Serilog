@@ -21,5 +21,6 @@
   </metadata>
   <files>
     <file src="readme.txt" target="" />
+    <file src="web.config.install.xdt" target="content" />
   </files>
 </package>
