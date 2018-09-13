@@ -1,6 +1,6 @@
 ﻿<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
   <appSettings xdt:Transform="InsertIfMissing"></appSettings>
   <appSettings>
-    <add key="episerver:LoggerFactoryType" value="EPi.Libraries.Logging.Serilog.SeriLoggerFactory" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
+    <add key="episerver:LoggerFactoryType" value="EPi.Libraries.Logging.Serilog.SeriLoggerFactory, EPi.Libraries.Logging" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
   </appSettings>
 </configuration>
