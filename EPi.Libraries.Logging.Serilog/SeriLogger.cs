@@ -17,6 +17,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 namespace EPi.Libraries.Logging.Serilog
 {
     using System;
@@ -37,7 +38,7 @@ namespace EPi.Libraries.Logging.Serilog
         ///     The logger
         /// </summary>
         private readonly ILogger logger;
-        
+
         private readonly ILoggerConfigurator loggerConfigurator;
 
         /// <summary>
@@ -47,18 +48,22 @@ namespace EPi.Libraries.Logging.Serilog
         /// <exception cref="ActivationException">if there are errors resolving the service instance.</exception>
         public SeriLogger(string name)
         {
+            if (this.loggerConfigurator == null)
+            {
+                this.loggerConfigurator = ServiceLocator.Current.GetInstance<ILoggerConfigurator>();
+            }
+
             if (this.logger == null)
             {
                 this.logger = this.loggerConfigurator.GetLogger(name: name);
             }
-
-            this.loggerConfigurator = ServiceLocator.Current.GetInstance<ILoggerConfigurator>();
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SeriLogger"/> class.
         /// </summary>
-        public SeriLogger() : this(null)
+        public SeriLogger()
+            : this(null)
         {
         }
 
@@ -102,7 +107,8 @@ namespace EPi.Libraries.Logging.Serilog
             TState state,
             TException exception,
             Func<TState, TException, string> messageFormatter,
-            Type boundaryType) where TException : Exception
+            Type boundaryType)
+            where TException : Exception
         {
             if (messageFormatter == null)
             {
@@ -121,7 +127,10 @@ namespace EPi.Libraries.Logging.Serilog
                 this.logger.ForContext(source: boundaryType);
             }
 
-            this.logger.Write(level: mappedLevel, exception: exception, messageTemplate: messageFormatter(arg1: state, arg2: exception));
+            this.logger.Write(
+                level: mappedLevel,
+                exception: exception,
+                messageTemplate: messageFormatter(arg1: state, arg2: exception));
         }
 
         /// <summary>

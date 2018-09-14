@@ -17,7 +17,7 @@ To do contextual logging create a Serilog.ILogger with the context of the passed
 private ILogger _logger;
 protected ILogger GetLogger(string name)
 {
-     var logger = _logger ?? (_logger = new LoggerConfiguration().ReadFrom.AppSettings().CreateLogger());
+     var logger = _logger ?? (_logger = new LoggerConfiguration().ReadFrom.AppSettings().Enrich.FromLogContext().CreateLogger());
 
      return string.IsNullOrWhiteSpace(name) ? logger : logger.ForContext("Logger", name);
 }
@@ -27,4 +27,7 @@ This name can be resolved by Structuremap, for contextual logging you can pass i
 container.Configure(x => x.For<ILogger>().AlwaysUnique().Use(s => LogManager.GetLogger(s.ParentType ?? typeof(ILogger))));
 
 (Thanx Wessel Terpstra for this addition)
+
+
+IMPORTANT: If you experience issues with Serilog nog logging after an Application Pool recycle, or a Restart... Call CloseAndFlush() on the Serilogger, or Dispose() on the ILoggerConfigurator instance.
 
