@@ -53,10 +53,7 @@ namespace EPi.Libraries.Logging.Serilog
                 this.loggerConfigurator = ServiceLocator.Current.GetInstance<ILoggerConfigurator>();
             }
 
-            if (this.logger == null)
-            {
-                this.logger = this.loggerConfigurator.GetLogger(name: name);
-            }
+            this.logger = this.loggerConfigurator.GetLogger(name: name);
         }
 
         /// <summary>

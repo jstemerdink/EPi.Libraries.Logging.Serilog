@@ -98,7 +98,9 @@ namespace EPi.Libraries.Logging.Serilog.AppSettings
 
             if (disposing)
             {
-                this.logger.Dispose();
+                this.logger?.Information("[Serilog] Closing down and flushing log");
+                this.logger?.Dispose();
+                this.logger = null;
             }
 
             this.disposed = true;

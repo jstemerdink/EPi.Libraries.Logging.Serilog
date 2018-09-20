@@ -32,7 +32,7 @@ namespace EPi.Libraries.Logging.Serilog
     /// <seealso cref="EPiServer.Framework.IInitializableHttpModule" />
     [InitializableModule]
     [ModuleDependency(typeof(InitializationModule))]
-    public class SeriLoggerInitializationModule : IInitializableHttpModule
+    public class SeriLoggerInitializationModule : IInitializableModule
     {
         private bool loggerClosedAndFlushed;
 
@@ -48,39 +48,6 @@ namespace EPi.Libraries.Logging.Serilog
         }
 
         /// <summary>
-        ///     Initialize any events on <see c="System.Web.HttpApplication" /> instances created by ASP.NET
-        /// </summary>
-        /// <param name="application">The instance to initialize</param>
-        /// <remarks>
-        ///     <para>
-        ///         This method may be called either after or before the Initialize-method so make sure you do not have any
-        ///         dependencies between these methods. The beaviour that is guaranteed
-        ///         is that your event handlers will not be called before the Initialize-method. If EPiServer is being initialized
-        ///         outside ASP.NET this method will never get called.
-        ///     </para>
-        ///     <para>
-        ///         When the ASP.NET runtime initializes it will create many instances of the
-        ///         <see c="System.Web.HttpApplication" /> class so make sure you only add
-        ///         logic to initialize events in this method, and not any one-time configuration which should be placed in the
-        ///         Initialize-method.
-        ///     </para>
-        ///     <para>
-        ///         Since a <see c="System.Web.HttpApplication" /> can be disposed at any time make sure you never store
-        ///         references to this class since that could create a memory leak.
-        ///     </para>
-        ///     <para>Don't add initialization logic in this method.</para>
-        /// </remarks>
-        public void InitializeHttpEvents(HttpApplication application)
-        {
-            if (application == null)
-            {
-                return;
-            }
-
-            application.Disposed += this.ApplicationDisposed;
-        }
-
-        /// <summary>
         /// Resets the module into an uninitialized state.
         /// </summary>
         /// <param name="context">The context.</param>
@@ -93,16 +60,6 @@ namespace EPi.Libraries.Logging.Serilog
         /// Any work done by <see cref="M:EPiServer.Framework.IInitializableModule.Initialize(EPiServer.Framework.Initialization.InitializationEngine)" /> as well as any code executing on <see cref="E:EPiServer.Framework.Initialization.InitializationEngine.InitComplete" /> should be reversed.
         /// </para></remarks>
         public void Uninitialize(InitializationEngine context)
-        {
-            this.CloseAndFlushLogger();
-        }
-
-        /// <summary>
-        ///     Application is disposed
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void ApplicationDisposed(object sender, EventArgs e)
         {
             this.CloseAndFlushLogger();
         }
