@@ -15,7 +15,7 @@
     <copyright>Copyright © Jeroen Stemerdink 2018</copyright>
     <tags>logging Serilog</tags>
     <dependencies>
-      <dependency id="EPiServer.Framework" version="11.1.0" />
+      <dependency id="EPiServer.Framework.AspNet" version="11.1.0" />
       <dependency id="Serilog" version="2.6.0" />
     </dependencies>
   </metadata>

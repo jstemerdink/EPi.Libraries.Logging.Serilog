@@ -28,6 +28,3 @@ container.Configure(x => x.For<ILogger>().AlwaysUnique().Use(s => LogManager.Get
 
 (Thanx Wessel Terpstra for this addition)
 
-
-IMPORTANT: If you experience issues with Serilog nog logging after an Application Pool recycle, or a Restart... Call CloseAndFlush() on the Serilogger, or Dispose() on the ILoggerConfigurator instance.
-

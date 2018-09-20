@@ -15,7 +15,7 @@
     <copyright>Copyright © Jeroen Stemerdink 2018</copyright>
     <tags>logging Serilog</tags>
     <dependencies>
-      <dependency id="EPi.Libraries.Logging.Serilog" version="3.0.0" />
+      <dependency id="EPi.Libraries.Logging.Serilog" version="3.1.0" />
       <dependency id="Serilog.Settings.AppSettings" version="2.1.2" />
     </dependencies>
   </metadata>
