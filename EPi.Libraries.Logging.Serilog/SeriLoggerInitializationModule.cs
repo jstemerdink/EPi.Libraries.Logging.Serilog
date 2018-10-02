@@ -29,7 +29,7 @@ namespace EPi.Libraries.Logging.Serilog
     /// <summary>
     /// Class SeriLoggerInitializationModule.
     /// </summary>
-    /// <seealso cref="EPiServer.Framework.IInitializableHttpModule" />
+    /// <seealso cref="InitializationModule" />
     [InitializableModule]
     [ModuleDependency(typeof(InitializationModule))]
     public class SeriLoggerInitializationModule : IInitializableModule

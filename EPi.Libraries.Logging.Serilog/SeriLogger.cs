@@ -39,7 +39,7 @@ namespace EPi.Libraries.Logging.Serilog
         /// </summary>
         private readonly ILogger logger;
 
-        private readonly ILoggerConfigurator loggerConfigurator;
+        private ILoggerConfigurator loggerConfigurator;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SeriLogger"/> class.
@@ -136,6 +136,7 @@ namespace EPi.Libraries.Logging.Serilog
         public void CloseAndFlush()
         {
             this.loggerConfigurator.Dispose();
+            this.loggerConfigurator = null;
         }
 
         /// <summary>
