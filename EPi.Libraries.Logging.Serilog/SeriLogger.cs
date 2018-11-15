@@ -17,6 +17,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 namespace EPi.Libraries.Logging.Serilog
 {
     using System;
@@ -38,30 +39,30 @@ namespace EPi.Libraries.Logging.Serilog
         /// </summary>
         private readonly ILogger logger;
 
+        private ILoggerConfigurator loggerConfigurator;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SeriLogger"/> class.
         /// </summary>
         /// <param name="name">Name of the logger</param>
+        /// <exception cref="ActivationException">if there are errors resolving the service instance.</exception>
         public SeriLogger(string name)
         {
-            if (this.logger == null)
+            if (this.loggerConfigurator == null)
             {
-                this.logger = this.LoggerConfigurator.Service.GetLogger(name);
+                this.loggerConfigurator = ServiceLocator.Current.GetInstance<ILoggerConfigurator>();
             }
+
+            this.logger = this.loggerConfigurator.GetLogger(name: name);
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SeriLogger"/> class.
         /// </summary>
-        public SeriLogger() : this(null)
+        public SeriLogger()
+            : this(null)
         {
         }
-
-        /// <summary>
-        /// Gets or sets the logger configurator.
-        /// </summary>
-        /// <value>The logger configurator.</value>
-        private Injected<ILoggerConfigurator> LoggerConfigurator { get; set; }
 
         /// <summary>
         /// Determines whether logging at the specified level is enabled.
@@ -74,7 +75,7 @@ namespace EPi.Libraries.Logging.Serilog
         {
             try
             {
-                return this.IsEnabled(MapLevel(level));
+                return this.IsEnabled(MapLevel(level: level));
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -89,9 +90,7 @@ namespace EPi.Libraries.Logging.Serilog
         /// <returns><c>true</c> if the specified level is enabled; otherwise, <c>false</c>.</returns>
         public bool IsEnabled(LogEventLevel level)
         {
-            return this.logger.IsEnabled(level);
-
-            // return global::Serilog.Log.IsEnabled(level);
+            return this.logger.IsEnabled(level: level);
         }
 
         /// <summary>
@@ -99,36 +98,36 @@ namespace EPi.Libraries.Logging.Serilog
         /// </summary>
         /// <typeparam name="TState">The type of the state object.</typeparam><typeparam name="TException">The type of the exception.</typeparam><param name="level">The criticality level of the log message.</param><param name="state">The state that should be logged.</param><param name="exception">The exception that should be logged.</param><param name="messageFormatter">The message formatter used to write the state to the log provider.</param><param name="boundaryType">The type at the boundary of the logging framework facing the code using the logging.</param>
         /// <exception cref="Exception">A delegate callback throws an exception.</exception>
-        /// <exception cref="ArgumentOutOfRangeException">level</exception>
+        /// <exception cref="ArgumentOutOfRangeException">The level is not supported</exception>
         public void Log<TState, TException>(
             Level level,
             TState state,
             TException exception,
             Func<TState, TException, string> messageFormatter,
-            Type boundaryType) where TException : Exception
+            Type boundaryType)
+            where TException : Exception
         {
             if (messageFormatter == null)
             {
                 return;
             }
 
-            LogEventLevel mappedLevel = MapLevel(level);
+            LogEventLevel mappedLevel = MapLevel(level: level);
 
-            if (!this.IsEnabled(mappedLevel))
+            if (!this.IsEnabled(level: mappedLevel))
             {
                 return;
             }
 
             if ((boundaryType != null) && (boundaryType != typeof(LoggerExtensions)))
             {
-                this.logger.ForContext(boundaryType);
-
-                // global::Serilog.Log.ForContext(boundaryType);
+                this.logger.ForContext(source: boundaryType);
             }
 
-            this.logger.Write(mappedLevel, exception, messageFormatter(state, exception));
-
-            // global::Serilog.Log.Write(mappedLevel, exception, messageFormatter(state, exception));
+            this.logger.Write(
+                level: mappedLevel,
+                exception: exception,
+                messageTemplate: messageFormatter(arg1: state, arg2: exception));
         }
 
         /// <summary>
@@ -136,7 +135,8 @@ namespace EPi.Libraries.Logging.Serilog
         /// </summary>
         public void CloseAndFlush()
         {
-            this.LoggerConfigurator.Service.Dispose();
+            this.loggerConfigurator.Dispose();
+            this.loggerConfigurator = null;
         }
 
         /// <summary>

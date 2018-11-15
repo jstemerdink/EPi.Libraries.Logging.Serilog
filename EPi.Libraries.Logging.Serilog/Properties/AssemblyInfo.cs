@@ -19,6 +19,7 @@
 // OTHER DEALINGS IN THE SOFTWARE.
 using System;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
@@ -42,5 +43,7 @@ using System.Runtime.InteropServices;
 [assembly: Guid("c2f0d9e8-f9e0-47ce-9a1a-b86ac7c004c1")]
 [assembly: CLSCompliant(true)]
 
-// Register Serlog as Episerver logger factory, https://world.episerver.com/documentation/developer-guides/CMS/logging/
+// Register Serilog as Episerver logger factory, https://world.episerver.com/documentation/developer-guides/CMS/logging/
 [assembly: EPiServer.Logging.LoggerFactory(typeof(EPi.Libraries.Logging.Serilog.SeriLoggerFactory))]
+
+[assembly: RuntimeCompatibility(WrapNonExceptionThrows = true)]
