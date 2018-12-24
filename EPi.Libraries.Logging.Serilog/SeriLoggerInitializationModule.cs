@@ -26,6 +26,8 @@ namespace EPi.Libraries.Logging.Serilog
     using EPiServer.Framework.Initialization;
     using EPiServer.ServiceLocation;
 
+    using InitializationModule = EPiServer.Framework.FrameworkInitialization;
+
     /// <summary>
     /// Class SeriLoggerInitializationModule.
     /// </summary>
