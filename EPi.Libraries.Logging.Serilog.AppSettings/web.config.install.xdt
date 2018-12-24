@@ -2,7 +2,5 @@
   <appSettings xdt:Transform="InsertIfMissing"></appSettings>
   <appSettings>
     <add key="serilog:minimum-level" value="Error" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)"  />
-    <add key="serilog:write-to:RollingFile.pathFormat" value="C:\Logs\myapp-{Date}.txt" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
-    <add key="serilog:write-to:RollingFile.retainedFileCountLimit" value="10" xdt:Transform="InsertIfMissing" xdt:Locator="Match(key)" />
   </appSettings>
 </configuration>
