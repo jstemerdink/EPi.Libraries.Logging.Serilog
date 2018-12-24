@@ -17,6 +17,7 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
+
 namespace EPi.Libraries.Logging.Serilog.AppSettings
 {
     using System;
@@ -38,13 +39,32 @@ namespace EPi.Libraries.Logging.Serilog.AppSettings
         private Logger logger;
 
         /// <summary>
+        /// Indicating whether the instance is disposed.
+        /// </summary>
+        private bool disposed;
+
+        /// <summary>
+        /// Finalizes an instance of the <see cref="LoggerConfigurator"/> class.
+        /// </summary>
+        ~LoggerConfigurator()
+        {
+            this.Dispose(false);
+        }
+
+        /// <summary>
         /// Gets a <see cref="T:Serilog.ILogger" /> instance for the provided name.
         /// </summary>
         /// <param name="name">Name of the logger</param>
         /// <returns>A new <see cref="T:Serilog.ILogger" /> instance for the provided name.</returns>
         public ILogger GetLogger(string name)
         {
-            return this.logger ?? (this.logger = new LoggerConfiguration().ReadFrom.AppSettings().CreateLogger());
+            ILogger configuredLogger = this.logger ?? (this.logger =
+                                                           new LoggerConfiguration().ReadFrom.AppSettings().Enrich
+                                                               .FromLogContext().CreateLogger());
+
+            return string.IsNullOrWhiteSpace(value: name)
+                       ? configuredLogger
+                       : configuredLogger.ForContext("Logger", value: name);
         }
 
         /// <summary>
@@ -61,7 +81,29 @@ namespace EPi.Libraries.Logging.Serilog.AppSettings
         /// </summary>
         public void Dispose()
         {
-            this.logger.Dispose();
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (this.disposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                this.logger?.Information("[Serilog] Closing down and flushing log");
+                this.logger?.Dispose();
+                this.logger = null;
+            }
+
+            this.disposed = true;
         }
     }
 }

@@ -35,7 +35,7 @@ namespace EPi.Libraries.Logging.Serilog
         /// </returns>
         public ILogger Create(string name)
         {
-            return new SeriLogger(name);
+            return new SeriLogger(name: name);
         }
     }
 }
