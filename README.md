@@ -11,6 +11,8 @@
 [![Security](https://sonarcloud.io/api/project_badges/measure?project=jstemerdink:EPi.Libraries.Logging.Serilog&metric=security_rating)](https://sonarcloud.io/component_measures?id=jstemerdink%3AEPi.Libraries.Logging.Serilog&metric=Security)
 [![Maintainability](https://sonarcloud.io/api/project_badges/measure?project=jstemerdink%3AEPi.Libraries.Logging.Serilog&metric=sqale_rating)](https://sonarcloud.io/component_measures?id=jstemerdink%3AEPi.Libraries.Logging.Serilog&metric=Maintainability)
 
+## NOTE
+As from CMS12 you can use configure your logging without the need of a custom provider, see [Optimizely logging](https://world.optimizely.com/documentation/developer-guides/CMS/logging/). For adding Serilog see my [blog](https://jstemerdink.blog/) 
 
 ## About
 This will add Serilog logging to your EPiServer site
