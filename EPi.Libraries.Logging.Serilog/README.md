@@ -6,6 +6,9 @@
 [![Platform](https://img.shields.io/badge/EPiServer-%2011.0.0-orange.svg?style=flat)](http://world.episerver.com/cms/)
 [![GitHub license](https://img.shields.io/badge/license-MIT%20license-blue.svg?style=flat)](LICENSE)
 
+## NOTE
+As from CMS12 you can use configure your logging without the need of a custom provider, see [Optimizely logging](https://world.optimizely.com/documentation/developer-guides/CMS/logging/). For adding Serilog see my [blog](https://jstemerdink.blog/) 
+
 ## About
 This will add Serilog logging to your EPiServer site.
 See [Serilog wiki](https://github.com/serilog/serilog/wiki/ for information about Serilog.
